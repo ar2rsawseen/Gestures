@@ -270,3 +270,11 @@ function Gestures:Up(event)
 		self:resolve(self.points)
 	end
 end
+
+function Gestures:remove()
+	self.tracking = false
+	self.conf.scope:removeChild(self.draw)
+	self.conf.scope:removeEventListener(Event.MOUSE_DOWN, self.Down, self)
+	self.conf.scope:removeEventListener(Event.MOUSE_MOVE, self.Move, self)
+	self.conf.scope:removeEventListener(Event.MOUSE_UP, self.Up, self)
+end
